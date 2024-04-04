@@ -12,12 +12,18 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
+  // Récupérer l'URL de l'API à partir des variables d'environnement
+  const apiUrl = process.env.REACT_APP_API;
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // try {
+    //   const res = await axios.post("/api/v1/auth/login", {
+    //     email,
+    //     password,
+    //   });
     try {
-      const res = await axios.post("/api/v1/auth/login", {
+      const res = await axios.post(`${apiUrl}/api/v1/auth/login`, {
         email,
         password,
       });

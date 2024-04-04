@@ -12,12 +12,13 @@ const Register = () => {
   const [address, setAddress] = useState("");
 
   const navigate = useNavigate();
-
+  // Récupérer l'URL de l'API à partir des variables d'environnement
+  const apiUrl = process.env.REACT_APP_API;
   // form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/register", {
+      const res = await axios.post(`${apiUrl}/api/v1/auth/register`, {
         name,
         email,
         password,
